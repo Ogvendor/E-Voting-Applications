@@ -14,4 +14,6 @@ public interface ConfirmationTokenService {
     void deleteExpiredToken();
 
     void confirmedAt(String token);
+
+
 }

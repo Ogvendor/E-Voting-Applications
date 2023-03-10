@@ -54,8 +54,11 @@ public class RegistrationServiceImpl implements RegistrationService{
         if (token.getConfirmedAt() != null){
             throw new IllegalStateException("Token has been used");
         }
-        confirmationTokenService.ConfirmedAt(token.getToken());
+        confirmationTokenService.confirmedAt(token.getToken());
+        return "Confirmed";
+
     }
+
 
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
