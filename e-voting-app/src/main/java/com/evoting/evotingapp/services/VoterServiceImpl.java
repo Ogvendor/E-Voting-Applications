@@ -33,7 +33,7 @@ public class VoterServiceImpl implements VoterService {
                 token,
                 Instant.now(),
                 Instant.now(),
-                Instant.now(),
+                Instant.now().plusSeconds(120),
                 voter
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
