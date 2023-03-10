@@ -3,17 +3,16 @@ package com.evoting.evotingapp.controllers;
 import com.evoting.evotingapp.exceptions.RegistrationException;
 import com.evoting.evotingapp.payload.request.RegistrationRequest;
 import com.evoting.evotingapp.registration.token.RegistrationService;
+import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/registration/")
 public class RegistrationController {
     RegistrationService registrationService;
 
@@ -22,9 +21,14 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> register(@RequestBody RegistrationRequest registrationRequest) throws RegistrationException {
-        registrationService.register(registrationRequest);
-        return new ResponseEntity<>(registrationRequest,HttpStatus.OK);
+    @PostMapping("register")
+    public ResponseEntity<?> register(@RequestBody RegistrationRequest registrationRequest) throws RegistrationException, MessagingException {
+        var response = registrationService.register(registrationRequest);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
+    @GetMapping("test")
+    public ResponseEntity<?> test(){
+        return new ResponseEntity<>("works",HttpStatus.OK);
     }
 }
