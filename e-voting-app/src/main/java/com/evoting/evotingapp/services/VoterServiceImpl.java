@@ -33,7 +33,7 @@ public class VoterServiceImpl implements VoterService {
                 token,
                 Instant.now(),
                 Instant.now(),
-                Instant.now(),
+                Instant.now().plusSeconds(120),
                 voter
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
@@ -44,7 +44,7 @@ public class VoterServiceImpl implements VoterService {
     public String login(LoginRequest loginRequest) throws RuntimeException {
         Optional<Voter> voter = voterRepo.findByEmailIgnoreCase(loginRequest.getEmail());
         if (voter.isPresent()){
-            if (voter.get().getEmail().equalsIgnoreCase(loginRequest.getEmail()) && voter.get().getPass_word().equalsIgnoreCase(loginRequest.getPass_word())){
+            if (voter.get().getEmail().equalsIgnoreCase(loginRequest.getEmail()) && voter.get().getPassWord().equalsIgnoreCase(loginRequest.getPass_word())){
                 return "Success_full";
             }else {
                 return "Incorrect email or password";

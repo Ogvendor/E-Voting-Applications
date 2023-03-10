@@ -26,15 +26,15 @@ public class Voter {
 
     @NotNull
     @NotBlank
-    private String first_name;
+    private String firstName;
 
     @NotNull
     @NotBlank
-    private String middle_name;
+    private String middleName;
 
     @NotNull
     @NotBlank
-    private String last_name;
+    private String lastName;
 
     @NotNull
     @NotBlank
@@ -42,9 +42,9 @@ public class Voter {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "^((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])){4,12}",
-            message = "password must contain at least 1 uppercase, 1 lowercase, 1 special character and 1 digit ")
-    private String pass_word;
+//    @Pattern(regexp = "^((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])){4,12}",
+//            message = "password must contain at least 1 uppercase, 1 lowercase, 1 special character and 1 digit ")
+    private String passWord;
 
 
     public Voter(){
@@ -53,9 +53,9 @@ public class Voter {
 
     public Voter(String email, String first_Name, String middle_Name, String last_Name, String pass_Word) {
         this.email =  email;
-        this.first_name = first_Name;
-        this.middle_name = middle_Name;
-        this.last_name = last_Name;
-        this.pass_word = pass_Word;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.passWord = passWord;
     }
 }
