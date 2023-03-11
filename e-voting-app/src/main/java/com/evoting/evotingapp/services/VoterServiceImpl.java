@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,7 +45,7 @@ public class VoterServiceImpl implements VoterService {
     public String login(LoginRequest loginRequest) throws RuntimeException {
         Optional<Voter> voter = voterRepo.findByEmailIgnoreCase(loginRequest.getEmail());
         if (voter.isPresent()){
-            if (voter.get().getEmail().equalsIgnoreCase(loginRequest.getEmail()) && voter.get().getPassWord().equalsIgnoreCase(loginRequest.getPass_word())){
+            if (voter.get().getEmail().equalsIgnoreCase(loginRequest.getEmail())){
                 return "Success_full";
             }else {
                 return "Incorrect email or password";
@@ -52,6 +53,13 @@ public class VoterServiceImpl implements VoterService {
         }
         throw new RuntimeException("");
     }
+
+    @Override
+    public List<Voter> getAllVoter() {
+        return voterRepo.findAll();
+    }
+
+
 
 
 }

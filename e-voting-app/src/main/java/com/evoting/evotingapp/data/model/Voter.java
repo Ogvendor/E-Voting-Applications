@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
+import java.lang.annotation.Documented;
 import java.util.UUID;
 
 @Entity
@@ -24,24 +25,21 @@ public class Voter {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotNull
-    @NotBlank
+
     private String firstName;
 
-    @NotNull
-    @NotBlank
+
+
     private String middleName;
 
-    @NotNull
-    @NotBlank
+
     private String lastName;
 
-    @NotNull
-    @NotBlank
-    @Email(message = "Email should be valid")
+
+//    @Email(message = "Email should be valid")
     private String email;
 
-    @NotBlank
+
 //    @Pattern(regexp = "^((?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])){4,12}",
 //            message = "password must contain at least 1 uppercase, 1 lowercase, 1 special character and 1 digit ")
     private String passWord;
